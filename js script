@@ -1,0 +1,21 @@
+function uploadImage() {
+    const input = document.getElementById("imageInput");
+    const gallery = document.getElementById("gallery");
+
+    if (input.files.length === 0) {
+        alert("Silakan pilih gambar produk terlebih dahulu.");
+        return;
+    }
+
+    const file = input.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+        const img = document.createElement("img");
+        img.src = e.target.result;
+        gallery.appendChild(img);
+    };
+
+    reader.readAsDataURL(file);
+    input.value = "";
+}
